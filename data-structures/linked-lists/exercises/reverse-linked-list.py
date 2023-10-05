@@ -25,6 +25,17 @@ def reverse_iterative(node):
     return head
 
 
+def reverse_iterative_mutation(node):
+    prev = None
+    curr = node
+    while curr:
+        next_node = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_node
+    return prev
+
+
 def reverse_recursive(node):
     head = Node
 
@@ -33,3 +44,4 @@ ll = Node(1, Node(2, Node(3, Node(4, Node(5)))))
 print(ll)
 print(reverse_iterative(ll))
 print(ll)
+print(reverse_iterative_mutation(ll))
