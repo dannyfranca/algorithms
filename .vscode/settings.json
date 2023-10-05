@@ -5,4 +5,7 @@
   },
   "github.copilot.editor.enableAutoCompletions": false,
   "github.copilot.inlineSuggest.enable": false,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  }
 }
