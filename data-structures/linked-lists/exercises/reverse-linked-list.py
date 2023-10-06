@@ -13,7 +13,7 @@ class Node(object):
         return output
 
 
-def has_cycle(head: Node) -> bool:
+def has_cycle(head):
     """Detects if a linked list has a cycle using Floyd's Tortoise and Hare algorithm."""
     slow = head
     fast = head
@@ -25,7 +25,7 @@ def has_cycle(head: Node) -> bool:
     return False
 
 
-def reverse_iterative(node: Node):
+def reverse_iterative(node):
     if has_cycle(node):
         raise ValueError("Linked list has a cycle. Cannot be reversed.")
     curr = node
@@ -52,8 +52,12 @@ def reverse_iterative_mutation(node):
     return prev
 
 
-def reverse_recursive(node):
-    head = Node
+def reverse_recursive(node, prev=None):
+    next_node = node.next
+    node.next = prev
+    if next_node:
+        return reverse_recursive(next_node, node)
+    return node
 
 
 ll = Node(1, Node(2, Node(3, Node(4, Node(5)))))
@@ -61,3 +65,7 @@ print(ll)
 print(reverse_iterative(ll))
 print(ll)
 print(reverse_iterative_mutation(ll))
+
+ll = Node(1, Node(2, Node(3, Node(4, Node(5)))))
+print(ll)
+print(reverse_recursive(ll))
