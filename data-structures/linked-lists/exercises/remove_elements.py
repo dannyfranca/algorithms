@@ -1,17 +1,4 @@
-class Node:
-    def __init__(self, value, next=None):
-        self.value = value
-        self.next = next
-
-    def __str__(self):
-        curr = self
-        output = ""
-        while curr:
-            output += str(curr.value) + "->"
-            curr = curr.next
-        if output.endswith("->"):
-            return output[:-2]
-        return output
+from node import LinkedList
 
 
 class Solution:
@@ -38,6 +25,11 @@ class Solution:
             self.head = next_node
 
 
-ll = Node(1, Node(2, Node(6, Node(3, Node(4, Node(5, Node(6)))))))
+ll = LinkedList(
+    1,
+    LinkedList(
+        2, LinkedList(6, LinkedList(3, LinkedList(4, LinkedList(5, LinkedList(6)))))
+    ),
+)
 print(ll)
 print(Solution(ll).remove_elements([6]))
