@@ -1,15 +1,14 @@
 from node import LinkedListWithCycle
-from has_cycle import has_cycle
+from has_cycle import has_cycle, create_cycle
 
 
 ll = LinkedListWithCycle(
     1, LinkedListWithCycle(2, LinkedListWithCycle(3, LinkedListWithCycle(4)))
 )
 print(has_cycle(ll))
+print(ll)
 
 # Create cycle
-ll.next.next.next.next = ll
+create_cycle(ll)
 print(has_cycle(ll))
-
-# Print cycle
 print(ll)

@@ -1,4 +1,4 @@
-from node import LinkedList
+from node import LinkedList, LinkedListWithCycle
 
 
 def has_cycle(head: LinkedList):
@@ -11,3 +11,15 @@ def has_cycle(head: LinkedList):
         if slow == fast:
             return True
     return False
+
+
+def create_cycle(head: LinkedList | LinkedListWithCycle):
+    if has_cycle(head):
+        return head
+    curr = head
+    while curr:
+        if not curr.next:
+            curr.next = head
+            break
+        curr = curr.next
+    return head
