@@ -1,7 +1,7 @@
-from node import Node
+from node import LinkedList
 
 
-def has_cycle(head: Node):
+def has_cycle(head: LinkedList):
     """Detects if a linked list has a cycle using Floyd's Tortoise and Hare algorithm."""
     slow = head
     fast = head
@@ -13,7 +13,7 @@ def has_cycle(head: Node):
     return False
 
 
-ll = Node(1, Node(2, Node(3, Node(4))))
+ll = LinkedList(1, LinkedList(2, LinkedList(3, LinkedList(4))))
 print(has_cycle(ll))
 
 ## Create cycle
