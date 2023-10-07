@@ -1,35 +1,61 @@
-from node import LinkedList
+from node import LinkedListWithCycle
+from has_cycle import create_cycle
+from weakref import WeakKeyDictionary
 
 
 class Solution:
-    def __init__(self, head):
-        self.head = head
-
-    def remove_elements(self, values):
-        self.curr = self.head
-        self.prev = None
+    def remove_elements(self, node, values):
+        head = node
+        prev = None
+        curr = node
+        read_dict = WeakKeyDictionary()
         values_dict = dict.fromkeys(values, True)
-        while self.curr:
-            if values_dict.get(self.curr.value):
-                self._remove_current_element()
+        while curr:
+            next_node = curr.next
+            if read_dict.get(curr):
+                break
+            if values_dict.get(curr.value):
+                if curr == head:
+                    head = next_node
+                if prev:
+                    prev.next = next_node
             else:
-                self.prev = self.curr
-            self.curr = self.curr.next
-        return self.head
-
-    def _remove_current_element(self):
-        next_node = self.curr.next
-        if self.prev:
-            self.prev.next = next_node
-        if self.head == self.curr:
-            self.head = next_node
+                prev = curr
+            read_dict[curr] = True
+            curr = curr.next
+        return head
 
 
-ll = LinkedList(
-    1,
-    LinkedList(
-        2, LinkedList(6, LinkedList(3, LinkedList(4, LinkedList(5, LinkedList(6)))))
-    ),
-)
+def create_linked_list():
+    return LinkedListWithCycle(
+        1,
+        LinkedListWithCycle(
+            2,
+            LinkedListWithCycle(
+                6,
+                LinkedListWithCycle(
+                    3,
+                    LinkedListWithCycle(
+                        4, LinkedListWithCycle(5, LinkedListWithCycle(6))
+                    ),
+                ),
+            ),
+        ),
+    )
+
+
+ll = create_linked_list()
+
+print("Remove element:")
 print(ll)
-print(Solution(ll).remove_elements([6]))
+print(Solution().remove_elements(ll, [6]))
+
+print("\nWith cycle:")
+ll = create_cycle(create_linked_list())
+print(ll)
+print(Solution().remove_elements(ll, [6]))
+
+print("\nRemove first element in a cycle:")
+ll = create_cycle(create_linked_list())
+print(ll)
+print(Solution().remove_elements(ll, [1, 6]))
