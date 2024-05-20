@@ -1,4 +1,7 @@
 # tags: binary_tree
+import unittest
+
+
 class Node(object):
     def __init__(self, val, left=None, right=None):
         self.val = val
@@ -23,22 +26,20 @@ class Solution(object):
         return self._isValidBSTHelper(n, float("-inf"), float("inf"))
 
 
-#   5
-#  / \
-# 4   7
-node = Node(5)
-node.left = Node(4)
-node.right = Node(7)
-print(Solution().isValidBST(node))
+class TestSolution(unittest.TestCase):
+    def test_is_valid_bst_true(self):
+        node = Node(5)
+        node.left = Node(4)
+        node.right = Node(7)
+        self.assertTrue(Solution().isValidBST(node))
 
-#   5
-#  / \
-# 4   7
-#    /
-#   2
-node = Node(5)
-node.left = Node(4)
-node.right = Node(7)
-node.right.left = Node(2)
-print(Solution().isValidBST(node))
-# False
+    def test_is_valid_bst_false(self):
+        node = Node(5)
+        node.left = Node(4)
+        node.right = Node(7)
+        node.right.left = Node(2)
+        self.assertFalse(Solution().isValidBST(node))
+
+
+if __name__ == "__main__":
+    unittest.main()

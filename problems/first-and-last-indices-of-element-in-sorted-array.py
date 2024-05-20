@@ -1,4 +1,7 @@
 # tags: binary_search
+import unittest
+
+
 class Solution:
     def getRange(self, arr, target):
         first = self.binarySearchIterative(arr, 0, len(arr) - 1, target, True)
@@ -47,7 +50,12 @@ class Solution:
                     low = mid + 1
 
 
-arr = [1, 3, 3, 5, 7, 8, 9, 9, 9, 15]
-x = 9
-print(Solution().getRange(arr, 9))
-# [6, 8]
+class TestSolution(unittest.TestCase):
+    def test_get_range(self):
+        arr = [1, 3, 3, 5, 7, 8, 9, 9, 9, 15]
+        x = 9
+        self.assertEqual(Solution().getRange(arr, 9), [6, 8])
+
+
+if __name__ == "__main__":
+    unittest.main()

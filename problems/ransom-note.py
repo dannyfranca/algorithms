@@ -1,5 +1,6 @@
 # tags: hash_map
 from collections import defaultdict
+import unittest
 
 
 class Solution(object):
@@ -16,8 +17,16 @@ class Solution(object):
         return True
 
 
-print(Solution().canSpell(["a", "b", "c", "d", "e", "f"], "bed"))
-# True
+class TestSolution(unittest.TestCase):
+    def setUp(self):
+        self.solution = Solution()
 
-print(Solution().canSpell(["a", "b", "c", "d", "e", "f"], "cat"))
-# False
+    def test_can_spell_true(self):
+        self.assertTrue(self.solution.canSpell(["a", "b", "c", "d", "e", "f"], "bed"))
+
+    def test_can_spell_false(self):
+        self.assertFalse(self.solution.canSpell(["a", "b", "c", "d", "e", "f"], "cat"))
+
+
+if __name__ == "__main__":
+    unittest.main()

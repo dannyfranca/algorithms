@@ -1,4 +1,7 @@
 # tags: hash_map
+import unittest
+
+
 class Solution(object):
     def twoSum(self, nums, target):
         for i1, a in enumerate(nums):
@@ -14,9 +17,16 @@ class Solution(object):
         for i, num in enumerate(nums):
             diff = target - num
             if diff in values:
-                return [i, values[diff]]
+                return [values[diff], i]
             values[num] = i
         return []
 
 
-print(Solution().twoSumB([2, 7, 11, 15], 18))
+class TestSolution(unittest.TestCase):
+    def test_two_sum(self):
+        self.assertEqual(Solution().twoSum([2, 7, 11, 15], 18), [1, 2])
+        self.assertEqual(Solution().twoSumB([2, 7, 11, 15], 18), [1, 2])
+
+
+if __name__ == "__main__":
+    unittest.main()
