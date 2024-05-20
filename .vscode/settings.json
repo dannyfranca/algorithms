@@ -1,11 +1,11 @@
 {
-  "code-runner.clearPreviousOutput": true,
-  "code-runner.executorMap": {
-    "typescript": "tsx",
-  },
-  "github.copilot.editor.enableAutoCompletions": false,
-  "github.copilot.inlineSuggest.enable": false,
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
-  }
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.executorMap": {
+        "typescript": "bun",
+    },
+    "github.copilot.editor.enableAutoCompletions": false,
+    "github.copilot.inlineSuggest.enable": false,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    }
 }
