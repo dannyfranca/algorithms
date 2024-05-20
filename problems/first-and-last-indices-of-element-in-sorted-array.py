@@ -1,3 +1,4 @@
+# tags: binary_search
 class Solution:
     def getRange(self, arr, target):
         first = self.binarySearchIterative(arr, 0, len(arr) - 1, target, True)

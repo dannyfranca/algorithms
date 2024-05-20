@@ -1,3 +1,4 @@
+# tags: linked_list
 class Node(object):
     def __init__(self, x):
         self.val = x

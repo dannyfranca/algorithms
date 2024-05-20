@@ -1,3 +1,4 @@
+# tags: hash_map
 class Solution(object):
     def twoSum(self, nums, target):
         for i1, a in enumerate(nums):

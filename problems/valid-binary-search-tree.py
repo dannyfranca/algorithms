@@ -1,3 +1,4 @@
+# tags: binary_tree
 class Node(object):
     def __init__(self, val, left=None, right=None):
         self.val = val

@@ -1,3 +1,4 @@
+# tags: hash_map
 from collections import defaultdict
 
 
