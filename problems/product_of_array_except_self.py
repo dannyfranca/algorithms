@@ -4,18 +4,20 @@ import unittest
 
 class Solution:
     def productExceptSelf(self, nums):
-        right = [1] * len(nums)
-        prod = 1
-        for i in range(len(nums) - 2, -1, -1):
-            prod *= nums[i + 1]
-            right[i] = prod
+        n = len(nums)
+        answer = [1] * n
 
-        prod = 1
-        for i in range(1, len(nums)):
-            prod *= nums[i - 1]
-            right[i] *= prod
+        left_prod = 1
+        for i, num in enumerate(nums):
+            answer[i] *= left_prod
+            left_prod *= num
 
-        return right
+        right_prod = 1
+        for i, num in enumerate(reversed(nums)):
+            answer[-i - 1] *= right_prod
+            right_prod *= num
+
+        return answer
 
 
 class TestSolution(unittest.TestCase):
