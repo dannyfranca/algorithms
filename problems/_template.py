@@ -12,7 +12,6 @@ class Solution:
 
 class TestSolution(unittest.TestCase):
     def test_execute(self):
-        # prepare
         self.assertEqual(Solution().versionIterative(), None)
         self.assertEqual(Solution().versionRecursive(), None)
 
